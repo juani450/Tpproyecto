@@ -1,0 +1,31 @@
+<mat-toolbar>
+  <button
+    id="menuIcon"
+    mat-icon-button
+    class="example-icon"
+    [matMenuTriggerFor]="secciones"
+  >
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <mat-menu #secciones="matMenu">
+    <button mat-menu-item routerLink="/inicio">inicio</button>
+    <button mat-menu-item [matMenuTriggerFor]="producto">Productos</button>
+  </mat-menu>
+
+  <span>MAKIAVELIK  |  ROPA URBANA</span>
+
+  <button id="menuInicio" mat-button routerLink="/inicio">inicio</button>
+
+  <button id="menuProducto" mat-button [matMenuTriggerFor]="producto">
+    Productos
+  </button>
+
+  <mat-menu #producto="matMenu">
+    <button mat-menu-item routerLink="/producto">general</button>
+    <button mat-menu-item routerLink="/remeras">Remeras</button>
+    <button mat-menu-item routerLink="/buzos">Buzos</button>
+    <button mat-menu-item routerLink="/pantalones">Pantalones</button>
+    <button mat-menu-item routerLink="/medias">Medias</button>
+  </mat-menu>
+</mat-toolbar>
