@@ -3,6 +3,7 @@ import { Usuario } from 'src/app/models/usuario';
 import { AuthService } from '../servicio/auth.service';
 import { FirestoreService } from '../../shared/service/firestore.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -59,5 +60,73 @@ export class RegistroComponent {
       email: this.usuarios.email,
       password: this.usuarios.password,
     };
+
+
+
+    
+    // constante "res" = resguarda una respuesta
+    const res = await this.servicioAuth.registrar(credenciales.email, credenciales.password)
+    // El método THEN nos devuelve la respuesta esperada por la promesa
+    .then(res => {
+      Swal.fire({
+        title: "Buen trabajo",
+        text: "Se pudo registrar con exito!",
+        icon: "success"
+      });
+
+      // Accedemos al servicio de rutas -> método navigate
+      // método NAVIGATE = permite dirigirnos a diferentes vistas
+      this.servicioRutas.navigate(['/inicio']);
+    })
+    // El método CATCH toma una falla y la vuelve un ERROR
+    .catch(error => {
+      Swal.fire({
+        title: "OH no!",
+        text: "Hubo un problema al registar el nuevo usuario!",
+        icon: "error"
+      });
+
+    })
+
+    const uid = await this.servicioAuth.obtenerUid();
+
+    this.usuarios.uid = uid;
+
+    this.guardarUsuario();
+
+    // Llamamos a la función limpiarInputs() para que se ejecute
+    this.limpiarInputs();
   }
+
+
+
+  // función para agregar NUEVO USUARIO
+  async guardarUsuario(){
+    this.servicioFirestore.agregarUsuario(this.usuarios, this.usuarios.uid)
+    .then(res => {
+      console.log(this.usuarios);
+    })
+    .catch(err => {
+      console.log('Error =>', err);
+    })
+  }
+
+
+
+
+  // Función para vaciar el formulario
+  limpiarInputs(){
+    const inputs = {
+      uid: this.usuarios.uid = '',
+      nombre: this.usuarios.nombre = '',
+      apellido: this.usuarios.apellido = '',
+      email: this.usuarios.email = '',
+      rol: this.usuarios.rol = '',
+      password: this.usuarios.password = ''
+    }
+  }
+
+
+
+
 }

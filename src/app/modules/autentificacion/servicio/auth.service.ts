@@ -22,9 +22,27 @@ export class AuthService {
 
 
 
-
-
   cerrarSesion() {
     return this.auth.signOut();
   }
+
+
+  // Función para tomar UID
+  async obtenerUid(){
+    // Nos va a generar una promesa, y la constante la va a capturar
+    const user = await this.auth.currentUser;
+
+    /*
+      Si el usuario no respeta la estructura de la interfaz /
+      Si tuvo problemas para el registro -> ej.: mal internet
+    */
+    if(user == null){
+      return null;
+    } else {
+      return user.uid;
+    }
+  }
+
+
+
 }

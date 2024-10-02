@@ -1,42 +1,59 @@
-<mat-toolbar>
-  <button
-    id="menuIcon"
-    mat-icon-button
-    class="example-icon"
-    [matMenuTriggerFor]="secciones"
-  >
-    <mat-icon>menu</mat-icon>
-  </button>
+<div class="navbar">
+  <mat-toolbar>
+    <button
+      id="menuIcon"
+      mat-icon-button
+      class="example-icon"
+      [matMenuTriggerFor]="secciones"
+    >
+      <mat-icon>menu</mat-icon>
+    </button>
 
-  <mat-menu #secciones="matMenu">
-    <button mat-menu-item routerLink="/inicio">inicio</button>
-    <button mat-menu-item [matMenuTriggerFor]="producto">Productos</button>
-  </mat-menu>
+    <mat-menu #secciones="matMenu">
+      <button mat-menu-item routerLink="/inicio">inicio</button>
+      <button mat-menu-item [matMenuTriggerFor]="producto">Productos</button>
+    </mat-menu>
 
-  <span>MAKIAVELIK</span>
+    <span>MAKIAVELIK</span>
 
-  <button id="menuInicio" mat-button routerLink="/inicio">inicio</button>
+    <button id="menuInicio" mat-button routerLink="/inicio">inicio</button>
 
-  <button id="menuProducto" mat-button [matMenuTriggerFor]="producto">
-    Categorias
-  </button>
+    <button id="menuProducto" mat-button [matMenuTriggerFor]="producto">
+      Categorias
+    </button>
 
-  <mat-menu #producto="matMenu">
-    <button mat-menu-item routerLink="/producto">general</button>
-    <button mat-menu-item routerLink="/remeras">Remeras</button>
-    <button mat-menu-item routerLink="/buzos">Buzos</button>
-    <button mat-menu-item routerLink="/pantalones">Pantalones</button>
-    <button mat-menu-item routerLink="/medias">Medias</button>
-  </mat-menu>
-  <span class="example-spacer"></span>
+    <mat-menu #producto="matMenu">
+      <button mat-menu-item routerLink="/producto">general</button>
+      <button mat-menu-item routerLink="/remeras">Remeras</button>
+      <button mat-menu-item routerLink="/buzos">Buzos</button>
+      <button mat-menu-item routerLink="/pantalones">Pantalones</button>
+      <button mat-menu-item routerLink="/medias">Medias</button>
+    </mat-menu>
+    <span class="example-spacer"></span>
 
-  <button mat-icon-button [matMenuTriggerFor]="usuario">
-    <mat-icon>account_circle</mat-icon>
-  </button>
-  <mat-menu #usuario="matMenu">
-    <button mat-menu-item (click)="iniciar()" *ngIf="logueado" routerLink="/registro">Registrarse</button>
-    <button mat-menu-item (click)="iniciar()" *ngIf="logueado"  routerLink="/inicioSesion">Iniciar Sesión</button>
-    <button mat-menu-item (click)="cerrarSesion()" *ngIf="deslogueado">Cerrar Sesión</button>
-  </mat-menu>
-  
-</mat-toolbar>
+    <button mat-icon-button [matMenuTriggerFor]="usuario">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+    <mat-menu #usuario="matMenu">
+      <button
+        mat-menu-item
+        (click)="iniciar()"
+        *ngIf="logueado"
+        routerLink="/registro"
+      >
+        Registrarse
+      </button>
+      <button
+        mat-menu-item
+        (click)="iniciar()"
+        *ngIf="logueado"
+        routerLink="/inicioSesion"
+      >
+        Iniciar Sesión
+      </button>
+      <button mat-menu-item (click)="cerrarSesion()" *ngIf="deslogueado">
+        Cerrar Sesión
+      </button>
+    </mat-menu>
+  </mat-toolbar>
+</div>
