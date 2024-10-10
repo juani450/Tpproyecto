@@ -1,6 +1,8 @@
 .example-spacer {
     flex: 1 1 auto;
   }
+  
+  
 
   
 
@@ -16,8 +18,8 @@
   }
   @media (min-width: 700px) {
     mat-toolbar{
-      background-color: #333;
-    color: white;
+      background-color: #4B8390;
+    color: #EDF4DB;
     }
 
     

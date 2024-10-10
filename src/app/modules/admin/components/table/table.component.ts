@@ -4,14 +4,12 @@ import { CrudService } from '../../services/crud.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 
-
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.css'],
 })
 export class TableComponent {
-
   coleccionProductos: Producto[] = [];
 
   //Variable para trabajar el estado de edicion y eliminacion de productos
@@ -54,7 +52,7 @@ export class TableComponent {
     //Validamos los valores del producto agregado
     if (this.producto.valid) {
       let nuevoProducto: Producto = {
-        //idProducto no se toma porque es generadapor la BD y no por el usuario
+        //idProducto no se toma porque es generada por la BD y no por el usuario
         IdProducto: '',
         //El resto es tomado con informacion ingresada por el usuario
         nombre: this.producto.value.nombre!,
@@ -66,29 +64,23 @@ export class TableComponent {
         alt: this.producto.value.alt!,
       };
 
-      //Enviamos nombre y url de la imagen ; definimos carpeta de imagenes como "producto"
+      // Enviamos nombre y url de la imagen; definimos carpeta de imágenes como "productos"
       await this.servicioCrud
         .subirImagen(this.nombreImagen, this.imagen, 'productos')
         .then((resp) => {
-          //encapsulamos formulario y enviamos la informacion obtenida
+          // Encapsulamos respuesta y envíamos la información obtenida
           this.servicioCrud.ObtenerUrlImagen(resp).then((url) => {
-            //
-
+            // Ahora método crearProducto recibe los datos del formulario y la URL formateada
             this.servicioCrud
               .crearProducto(nuevoProducto, url)
               .then((producto) => {
-                Swal.fire({
-                  title: 'Sos un capo!',
-                  text: 'El producto ha sido agregado correctamente!',
-                  icon: 'success',
-                });
+                alert('Ha agregado un nuevo producto con éxito :)');
+                // Limpiamos formulario para agregar nuevos productos
+                this.producto.reset();
               })
               .catch((error) => {
-                Swal.fire({
-                  title: 'error!',
-                  text: 'Hubo un problema al agregar el producto!',
-                  icon: 'error',
-                });
+                alert('Hubo un problema al agregar un nuevo producto :(');
+                this.producto.reset();
               });
           });
         });
@@ -145,8 +137,36 @@ export class TableComponent {
       alt: this.producto.value.alt!,
     };
 
-    //actualizarProducto(){}
+    // Verificamos que el usuario ingrese una nueva imagen o no
+    if (this.imagen) {
+      this.servicioCrud
+        .subirImagen(this.nombreImagen, this.imagen, 'productos')
+        .then((resp) => {
+          this.servicioCrud
+            .ObtenerUrlImagen(resp)
+            .then((url) => {
+              // Actualizamos URL de la imagen en los datos del formulario
+              datos.imagen = url;
+              // Actualizamos los datos desde el formulario de edición
+              this.actualizarProducto(datos);
+              // Vaciamos casillas del formulario
+              this.producto.reset();
+            })
+            .catch((error) => {
+              alert('Hubo un problema al subir la imagen :( \n' + error);
+              this.producto.reset();
+            });
+        });
+    } else {
+      /*
+        Actualizamos formulario con los datos recibidos del usuario, pero sin modificar la
+        imagen ya existente en Firestore y Storage
+      */
+      this.actualizarProducto(datos);
+    }
+  }
 
+  actualizarProducto(datos: Producto) {
     this.servicioCrud
       .modificarProducto(this.productoSeleccionado.IdProducto, datos)
       .then((producto) => {
@@ -155,5 +175,32 @@ export class TableComponent {
       .catch((error) => {
         alert('Hubo un problema al modificar el producto');
       });
+  }
+
+  // Método para CARGAR IMÁGENES
+  cargarImagen(event: any) {
+    // Variable para obtener el archivo subido desde el input del HTML
+    let archivo = event.target.files[0];
+    // Variable para crear un nuevo objeto de tipo "archivo" o "file" y poder leerlo
+    let reader = new FileReader();
+    if (archivo != undefined) {
+      /*
+        Llamamos a método readAsDataUrl para leer toda la información recibida.
+        Enviamos como parámetro el archivo porque será el encargado de tener la info. 
+        ingresada por el usuario
+      */
+      reader.readAsDataURL(archivo);
+      // Definimos qué haremos con la información mediante función flecha
+      reader.onloadend = () => {
+        let url = reader.result;
+        // Verificamos que la URL sea existente y diferente a "nula"
+        if (url != null) {
+          // Definimos nombre de la imagen con atributo "name" del input
+          this.nombreImagen = archivo.name;
+          // Definimos ruta de la imagen según URL recibida en formato cadena (string)
+          this.imagen = url.toString();
+        }
+      };
+    }
   }
 }

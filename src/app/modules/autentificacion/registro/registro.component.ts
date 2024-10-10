@@ -70,7 +70,7 @@ export class RegistroComponent {
     .then(res => {
       Swal.fire({
         title: "Buen trabajo",
-        text: "Se pudo registrar con exito!",
+        text: "Se pudo registrar con exito! ",
         icon: "success"
       });
 

@@ -1,4 +1,4 @@
-import { importProvidersFrom, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Producto } from 'src/app/models/producto';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { ProductoComponent } from '../../producto/page/producto/producto.component';
@@ -125,24 +125,21 @@ export class CrudService {
    * @returns <- se retorna lo obtenido
    */
 
-  //SUBIR imagenes con sus referencias
-  async subirImagen(nombre: string, imagen: any, ruta: string) {
-    //Accede al storage(almacenamiento) , ruta (carpeta) / nombre (nombre imagen)
-    try {
+  // SUBIR imágenes con sus referencias
+  async subirImagen(nombre: string, imagen: any, ruta: string){
+    try{
+      // Crear una referencia de imagen
+      // accede a Storage (almacenamiento), ruta (carpeta) / nombre (nombreImagen)
       let referenciaImagen = ref(this.storage, ruta + '/' + nombre);
-
-      //asignamos a la respuesta la informacion de la imagen subida
-      this.respuesta = await uploadString(
-        referenciaImagen,
-        imagen,
-        'data_url'
-      ).then((resp) => {
+      // Asignamos a la respuesta la información de la imagen subida
+      this.respuesta = await uploadString(referenciaImagen, imagen, 'data_url')
+      .then(resp => {
         return resp;
-      });
+      })
       return this.respuesta;
-    } catch (error) {
-      console.log('Error: \n' + error);
-
+    }
+    catch(error){
+      console.log("Error: \n"+error);
       return this.respuesta;
     }
   }
