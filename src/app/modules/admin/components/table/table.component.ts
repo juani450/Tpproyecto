@@ -10,6 +10,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./table.component.css'],
 })
 export class TableComponent {
+  //CREAR COLECCION DE PRODUCTOS DEL TIPO PRODUCTOS -> LO DEFINIMOS CON UN ARRAY
   coleccionProductos: Producto[] = [];
 
   //Variable para trabajar el estado de edicion y eliminacion de productos
@@ -52,7 +53,7 @@ export class TableComponent {
     //Validamos los valores del producto agregado
     if (this.producto.valid) {
       let nuevoProducto: Producto = {
-        //idProducto no se toma porque es generada por la BD y no por el usuario
+        //idProducto no se toma porque es generadapor la BD y no por el usuario
         IdProducto: '',
         //El resto es tomado con informacion ingresada por el usuario
         nombre: this.producto.value.nombre!,
@@ -64,26 +65,34 @@ export class TableComponent {
         alt: this.producto.value.alt!,
       };
 
-      // Enviamos nombre y url de la imagen; definimos carpeta de imágenes como "productos"
+      //Enviamos nombre y url de la imagen ; definimos carpeta de imagenes como "producto"
       await this.servicioCrud
         .subirImagen(this.nombreImagen, this.imagen, 'productos')
         .then((resp) => {
-          // Encapsulamos respuesta y envíamos la información obtenida
+          //encapsulamos formulario y enviamos la informacion obtenida
           this.servicioCrud.ObtenerUrlImagen(resp).then((url) => {
-            // Ahora método crearProducto recibe los datos del formulario y la URL formateada
+            //
+
             this.servicioCrud
               .crearProducto(nuevoProducto, url)
               .then((producto) => {
-                alert('Ha agregado un nuevo producto con éxito :)');
-                // Limpiamos formulario para agregar nuevos productos
-                this.producto.reset();
+                Swal.fire({
+                  title: 'Listoo!',
+                  text: 'El producto ha sido agregado correctamente!',
+                  icon: 'success',
+                });
               })
               .catch((error) => {
-                alert('Hubo un problema al agregar un nuevo producto :(');
-                this.producto.reset();
+                Swal.fire({
+                  title: 'error!',
+                  text: 'Hubo un problema al agregar el producto!',
+                  icon: 'error',
+                });
               });
           });
         });
+
+        this.limpiarInputs()
     }
   }
 
@@ -102,10 +111,18 @@ export class TableComponent {
         this.productoSeleccionado.imagen
       )
       .then((respuesta) => {
-        alert('El producto se ha eliminado correctamente!');
+        Swal.fire({
+          title: 'Listoo!',
+          text: 'El producto se ha eliminado correctamente',
+          icon: 'success',
+        });
       })
       .catch((error) => {
-        alert('No se ha podido eliminar el producto \n' + error);
+        Swal.fire({
+          title: 'Error',
+          text: 'No se ha podido eliminar el producto',
+          icon: 'error',
+        });
       });
   }
 
@@ -166,14 +183,23 @@ export class TableComponent {
     }
   }
 
+  //ACTUALIZA LA INFORMACION YA EXISTENTE DE LOS PRODUCTOS
   actualizarProducto(datos: Producto) {
     this.servicioCrud
       .modificarProducto(this.productoSeleccionado.IdProducto, datos)
       .then((producto) => {
-        alert('El producto fue modificado con èxito');
+        Swal.fire({
+          title: 'Listoo!',
+          text: 'El producto fue modiicado con exito',
+          icon: 'success',
+        });
       })
       .catch((error) => {
-        alert('Hubo un problema al modificar el producto');
+        Swal.fire({
+          title: 'Oh no!',
+          text: 'Hubo un problema al modificar el producto',
+          icon: 'error',
+        });
       });
   }
 
@@ -202,5 +228,16 @@ export class TableComponent {
         }
       };
     }
+  }
+
+  // Función para vaciar el formulario
+  limpiarInputs() {
+    this.producto.setValue({
+      nombre: '',
+      precio: 0,
+      descripcion: '',
+      categoria: '',
+      alt: '',
+    });
   }
 }

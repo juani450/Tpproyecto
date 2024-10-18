@@ -1,26 +1,28 @@
-.example-spacer {
-    flex: 1 1 auto;
-  }
-  
-  
 
-  
+.mat-toolbar {
+  min-height: 100px; /* O el valor que desees */
+}
 
-  /*declaramos la palabra reservada MEDIA -> Dispositivos pequeños ej(celulares)*/
-  @media (min-width:300px) and (max-width:700px) {
+.logo-container {
+  text-align: center; /* Centra el contenido horizontalmente */
+  width: 100%; /* Asegúrate de que el contenedor ocupe todo el ancho */
+}
 
-    mat-toolbar{
-      background-color: #333;
+.logo {
+  max-width: 100%; /* Asegúrate de que la imagen no desborde */
+  height: auto; /* Mantiene la proporción */
+}
+
+/*declaramos la palabra reservada MEDIA -> Dispositivos pequeños ej(celulares)*/
+@media (min-width: 300px) and (max-width: 700px) {
+  mat-toolbar {
+    background-color: #333;
     color: white;
-    }
-
-    
   }
-  @media (min-width: 700px) {
-    mat-toolbar{
-      background-color: #4B8390;
-    color: #EDF4DB;
-    }
-
-    
+}
+@media (min-width: 700px) {
+  mat-toolbar {
+    background-color: #4b8390;
+    color: #edf4db;
   }
+}

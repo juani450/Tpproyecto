@@ -22,10 +22,7 @@ DeleteObject => Para eliminar un espacio en el almacenamiento
 })
 export class CrudService {
 
-
-
-  //DEFINIMOS COLECCION PARA LOS PRODUCTOS Y SERA SUBIDA COMO "PRODUCTO" A FIRESTORE
-
+  //DEFINIMOS COLECCION PARA LOS PRODUSCTOS Y SERA SUBBIDA COM "PRODUCTO" A FIRESTORE
   private productosCollection: AngularFirestoreCollection<Producto>;
 
   //Definimos variable "respuesta" que podra subir resultados
@@ -125,25 +122,31 @@ export class CrudService {
    * @returns <- se retorna lo obtenido
    */
 
-  // SUBIR imágenes con sus referencias
-  async subirImagen(nombre: string, imagen: any, ruta: string){
-    try{
-      // Crear una referencia de imagen
-      // accede a Storage (almacenamiento), ruta (carpeta) / nombre (nombreImagen)
+  //SUBIR imagenes con sus referencias
+  async subirImagen(nombre: string, imagen: any, ruta: string) {
+    //Accede al storage(almacenamiento) , ruta (carpeta) / nombre (nombre imagen)
+    try {
       let referenciaImagen = ref(this.storage, ruta + '/' + nombre);
-      // Asignamos a la respuesta la información de la imagen subida
-      this.respuesta = await uploadString(referenciaImagen, imagen, 'data_url')
-      .then(resp => {
+
+      //asignamos a la respuesta la informacion de la imagen subida
+      this.respuesta = await uploadString(
+        referenciaImagen,
+        imagen,
+        'data_url'
+      ).then((resp) => {
         return resp;
-      })
+      });
       return this.respuesta;
-    }
-    catch(error){
-      console.log("Error: \n"+error);
+    } catch (error) {
+      console.log('Error: \n' + error);
+
       return this.respuesta;
     }
   }
 
+
+
+  
 
 
 

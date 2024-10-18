@@ -29,11 +29,22 @@
       <button mat-menu-item routerLink="/pantalones">Pantalones</button>
       <button mat-menu-item routerLink="/medias">Medias</button>
     </mat-menu>
-    <span class="example-spacer"></span>
+    
+
+    <div class="logo-container">
+    <img class="logo" src="../../../../../assets/logo.png" alt="" width="100px">
+    </div>
+
+
+    <button mat-icon-button routerLink="/admin">
+      <mat-icon>manage_accounts</mat-icon>
+    </button>
+
 
     <button mat-icon-button [matMenuTriggerFor]="usuario">
       <mat-icon>account_circle</mat-icon>
     </button>
+
     <mat-menu #usuario="matMenu">
       <button
         mat-menu-item
@@ -55,5 +66,6 @@
         Cerrar Sesión
       </button>
     </mat-menu>
+    
   </mat-toolbar>
 </div>

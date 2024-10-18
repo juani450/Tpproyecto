@@ -68,7 +68,7 @@
 <!-- Boton para agregar productos -->
 <button
   type="button"
-  class="btn btn-primary"
+  class="boton"
   data-bs-toggle="modal"
   data-bs-target="#agregarProducto"
 >
@@ -105,7 +105,7 @@
             class="form-control"
             type="text"
             formControlName="nombre"
-            placeholder="Ej: Camiseta de boca"
+            placeholder="Ej: Remera Oversize Thrasher"
           />
         </div>
 
@@ -115,7 +115,7 @@
             class="form-control"
             type="text"
             formControlName="descripcion"
-            placeholder="Ej: Camiseta marca Adidas"
+            placeholder="Ej: Remera oversize color rojo marca Croma"
           />
         </div>
 
@@ -136,18 +136,25 @@
             type="button"
             formControlName="categoria"
           >
-            <option value="remeras">Remeras</option>
-            <option value="buzos">Buzos</option>
-            <option value="pantalones">Pantalones</option>
-            <option value="medias">Medias</option>
+          <option value="remeras">Remeras</option>
+          <option value="buzos">Buzos</option>
+          <option value="pantalones">Pantalones</option>
+          <option value="medias">Medias</option>
           </select>
         </div>
 
         <div class="mb-3">
           <label for="form-label">Ingrese una imagen</label>
+          <!--<input class="form-control" type="text" formControlName="imagen"
+                      placeholder="Ingrese vinculo de una imagen">-->
+
           <!--
-                    <input class="form-control" type="text" formControlName="imagen"
-                        placeholder="Ingrese vinculo de una imagen">-->
+            type="file" -> recibe archivos
+            accept="imagen/*" -> acepte todo tipo de extensiones (jpg, png, pdf, doc, gif)
+            (change)="cargarImagen($event)" -> ejecuta el evento de cargarImagen que definimos 
+            en la lógica del componente
+            -->
+
           <input
             type="file"
             accept="imagen/*"
@@ -260,14 +267,13 @@
 
         <div class="mb-3">
           <label for="form-label">Ingrese una imagen</label>
-          <!--<input
-            class="form-control"
-            type="text"
-            formControlName="imagen"
-            placeholder="{{ productoedit.imagen }}"
-          />-->
-
-          <input type="file" accept="imagen/*" (change)="cargarImagen($event)">
+          <!--<input class="form-control" type="text" formControlName="imagen"
+                        placeholder="{{productoedit.imagen}}">-->
+          <input
+            type="file"
+            accept="imagen/*"
+            (change)="cargarImagen($event)"
+          />
         </div>
 
         <div class="mb-3">
@@ -353,7 +359,7 @@
           class="btn btn-outline-secondary"
           data-bs-dismiss="modal"
         >
-          Close
+          Cerrar
         </button>
       </div>
     </div>

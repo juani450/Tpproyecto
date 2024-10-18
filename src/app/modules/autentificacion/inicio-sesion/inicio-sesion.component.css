@@ -1,13 +1,60 @@
-.container{
-    display: flex;
-    padding: 10px;
-    justify-content: center;
+.container {
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 400px;
 }
 
-.contenido{
-    width: 200px;
-    display: inline-block;
-    padding: 15px;
-    border-radius: 8px;
-    margin: 10px;
+.contenido {
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.material-icons {
+    color: #4B8390;
+}
+
+mat-form-field {
+    width: 100%;
+    margin: 15px 0;
+}
+
+mat-form-field mat-label {
+    color: #4B8390;
+}
+
+mat-form-field input {
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    transition: border 0.3s;
+}
+
+mat-form-field input:focus {
+    border-color: #000000;
+    box-shadow: #4B8390;
+}
+
+.boton {
+    background-color: #4B8390;
+    color: white;
+    border-radius: 5px;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+.boton:hover {
+    background-color: #335f69;
+}
+
+mat-hint {
+    font-size: 12px;
+    color: #999;
 }
