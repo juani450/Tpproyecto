@@ -8,6 +8,11 @@ import { BuzosComponent } from './page/buzos/buzos.component';
 import { PantalonesComponent } from './page/pantalones/pantalones.component';
 import { MediasComponent } from './page/medias/medias.component';
 import { ProductoComponent } from './page/producto/producto.component';
+import { CardBuzosComponent } from './components/card-buzos/card-buzos.component';
+import { CardRemerasComponent } from './components/card-remeras/card-remeras.component';
+import { CardPantalonesComponent } from './components/card-pantalones/card-pantalones.component';
+import { CardMediasComponent } from './components/card-medias/card-medias.component';
+import { CardComponent } from './components/card/card.component';
 
 
 @NgModule({
@@ -16,7 +21,12 @@ import { ProductoComponent } from './page/producto/producto.component';
     BuzosComponent,
     PantalonesComponent,
     MediasComponent,
-    ProductoComponent
+    ProductoComponent,
+    CardBuzosComponent,
+    CardRemerasComponent,
+    CardPantalonesComponent,
+    CardMediasComponent,
+    CardComponent
   ],
   imports: [
     CommonModule,
