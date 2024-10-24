@@ -2,27 +2,70 @@
 
 html,
 body {
-    height: 100%;
+  height: 100%;
+  background-color: #edf4db;
 }
 
 body {
-    margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 html,
 body {
-    height: 100%;
+  height: 100%;
 }
 
 body {
-    margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
-
 
 .rubik-wet-paint-regular {
-    font-family: "Rubik Wet Paint", system-ui;
-    font-weight: 400;
-    font-style: normal;
+  font-family: "Rubik Wet Paint", system-ui;
+  font-weight: 400;
+  font-style: normal;
 }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+/*Estilos Para Modo Oscuro*/
+body {
+  transition: all 1.5 ease;
+}
+#toggle {
+  display: none;
+}
+#label_toggle {
+  position: static;
+  cursor: pointer;
+}
+
+
+
+.dark {
+  background-color: #45334d;
+  color: #edf4db;
+  transition: all 1.5 ease;
+
+  .mat-toolbar {
+    background-color: #333;
+    color: white;
+  }
+}
+/*{
+rgb(56, 41, 41);
+
+#492828;
+rgb(61, 37, 37);
+ 
+
+    color: black;
+}
+*/

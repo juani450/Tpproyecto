@@ -11,7 +11,7 @@
 
     <mat-menu #secciones="matMenu">
       <button mat-menu-item routerLink="/inicio">inicio</button>
-      <button mat-menu-item [matMenuTriggerFor]="producto">Productos</button>
+      <button mat-menu-item [matMenuTriggerFor]="producto">Categorias</button>
     </mat-menu>
 
     <span class="rubik-wet-paint-regular">MAKIAVELIK</span>
@@ -34,7 +34,7 @@
     
 
     <div class="logo-container">
-    <img class="logo" src="../../../../../assets/logo.png" alt="" width="100px">
+    <img class="logo" src="../../../../../assets/diseñovarios/logo.png" alt="" width="100px">
     </div>
 
 
@@ -46,6 +46,7 @@
     <button mat-icon-button [matMenuTriggerFor]="usuario">
       <mat-icon>account_circle</mat-icon>
     </button>
+
 
     <mat-menu #usuario="matMenu">
       <button
@@ -68,6 +69,15 @@
         Cerrar Sesión
       </button>
     </mat-menu>
+
+    
+    <!--Label Para Modo Oscuro-->
+    <label for="toggle" id="label_toggle"><i class="fa-solid fa-moon"></i></label>
+    <input type="checkbox" id="toggle" (click)="cambiarFondo()">
+
+
+
+
     
   </mat-toolbar>
 </div>
