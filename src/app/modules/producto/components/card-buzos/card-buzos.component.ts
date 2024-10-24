@@ -12,7 +12,7 @@ export class CardBuzosComponent {
    // Colección de todos los productos
    coleccionProductos: Producto[] = [];
    // Colección de sólo productos de categoría "Juguetes"
-   coleccionJuguetes: Producto[] = [];
+   coleccionBuzos: Producto[] = [];
    productoSeleccionado!: Producto;
    modalVisible: boolean = false;
    constructor(public servicioCrud: CrudService){}
@@ -33,7 +33,7 @@ export class CardBuzosComponent {
        // colección de juguetes específicada
        if(producto.categoria === "buzos"){
          // .push: sube o agrega un item a una colección
-         this.coleccionJuguetes.push(producto);
+         this.coleccionBuzos.push(producto);
        }
      })
    }

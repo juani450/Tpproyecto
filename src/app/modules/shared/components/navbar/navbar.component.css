@@ -1,6 +1,7 @@
 
 .mat-toolbar {
   min-height: 100px; /* O el valor que desees */
+  padding: 40px;
 }
 
 .logo-container {
