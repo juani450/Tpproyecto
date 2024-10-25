@@ -1,24 +1,6 @@
-.table-responsive {
-    overflow-x: auto; /* Permite desplazamiento horizontal */
-    -webkit-overflow-scrolling: touch; /* Mejora el desplazamiento en iOS */
+.container{
+    display: flex;
+    padding: 1rem;
+    text-align: center;
+    justify-content: space-around;
 }
-
-table {
-    width: 100%; /* Asegura que la tabla use todo el ancho disponible */
-    border-collapse: collapse;
-}
-
-th, td {
-    padding: 8px;
-    text-align: left;
-    border: 1px solid #ddd; /* Añade borde para visualización */
-}
-
-@media (max-width: 600px) {
-    th, td {
-        display: block; /* Cada celda en una nueva línea */
-        width: 100%; /* Cada celda ocupa el ancho completo */
-    }
-}
-
-

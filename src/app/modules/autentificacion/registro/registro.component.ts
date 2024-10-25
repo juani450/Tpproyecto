@@ -21,7 +21,7 @@ export class RegistroComponent {
     nombre: '',
     apellido: '',
     email: '',
-    rol: '',
+    rol: 'vis', // -> designamos un rol por defecto para los usuarios que se registren,
     password: '',
   };
 
@@ -38,23 +38,7 @@ export class RegistroComponent {
   // FUNCIÓN ASINCRONICA PARA EL REGISTRO
   async registrar() {
     // CREDENCIALES = información que ingrese el usuario
-    //################################ LOCAL
-    /*
-    const credenciales = {
-      uid: this.usuarios.uid,
-      nombre: this.usuarios.nombre,
-      apellido: this.usuarios.apellido,
-      email: this.usuarios.email,
-      rol: this.usuarios.rol,
-      password: this.usuarios.password
-    }*/
-
-    // enviamos los nuevos registros por medio del método push a la colección
-    // this.coleccionUsuarios.push(credenciales);
-
-    // Notificamos al usuario el correcto registro
-    // alert("Te registraste con éxito :)");
-    // ############################### FIN LOCAL
+    
 
     const credenciales = {
       email: this.usuarios.email,
@@ -121,7 +105,7 @@ export class RegistroComponent {
       nombre: this.usuarios.nombre = '',
       apellido: this.usuarios.apellido = '',
       email: this.usuarios.email = '',
-      rol: this.usuarios.rol = '',
+      rol: this.usuarios.rol = 'vis',
       password: this.usuarios.password = ''
     }
   }
