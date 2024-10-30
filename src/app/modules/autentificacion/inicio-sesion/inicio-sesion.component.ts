@@ -4,6 +4,7 @@ import { AuthService } from '../servicio/auth.service';
 import { FirestoreService } from '../../shared/service/firestore.service';
 import { Usuario } from 'src/app/models/usuario';
 import Swal from 'sweetalert2';
+import * as CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'app-inicio-sesion',
@@ -123,6 +124,9 @@ export class InicioSesionComponent {
 
         this.limpiarInputs();
     });
+  }catch(error){
+    this.limpiarInputs();
+  }
   }
   // Función para vaciar el formulario
   limpiarInputs() {
@@ -132,4 +136,4 @@ export class InicioSesionComponent {
     }
   }
 }
-}
+

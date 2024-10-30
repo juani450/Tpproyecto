@@ -18,7 +18,7 @@
 @media (min-width: 300px) and (max-width: 700px) {
   mat-toolbar {
     background-color: #333;
-    color: white;
+    color: #edf4db;
   }
 }
 @media (min-width: 700px) {
