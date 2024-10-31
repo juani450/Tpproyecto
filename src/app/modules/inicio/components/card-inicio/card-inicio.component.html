@@ -1,6 +1,5 @@
-<!-- Card para mostrar TODOS los productos que se hayan ingresado -->
 <div class="container">
-    <div class="card" *ngFor="let producto of coleccionPantalones">
+    <div class="card" *ngFor="let producto of coleccionInicio">
       <div class="card-img">
         <img
           src="{{ producto.imagen }}"
@@ -23,7 +22,7 @@
           class="card-btn"
           type="button"
           data-bs-toggle="modal"
-          data-bs-target="#modalCardPantalones"
+          data-bs-target="#modalCardInicio"
           (click)="mostrarVer(producto)"
         >
           Ver más

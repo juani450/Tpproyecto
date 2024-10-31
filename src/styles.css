@@ -26,6 +26,16 @@ body {
   font-weight: 400;
   font-style: normal;
 }
+
+
+
+.bangers-regular {
+  font-family: "Bangers", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
 html,
 body {
   height: 100%;
