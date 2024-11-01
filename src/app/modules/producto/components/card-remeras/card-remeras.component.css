@@ -115,3 +115,44 @@ then set the desired styles for .card-img. */
     transform: translateY(3px);
   }
   
+
+
+
+
+  /*Diseño del modal ver mas*/
+
+/* Asegúrate de que el modal tenga un ancho adecuado */
+.modal-dialog {
+  max-width: 600px; /* Ajusta el ancho según tus necesidades */
+  margin: 1.75rem auto; /* Centra el modal en la pantalla */
+}
+
+/* Estilo para la imagen en el modal */
+.modal-body img {
+  width: 100%; /* Hace que la imagen ocupe todo el ancho del contenedor */
+  height: auto; /* Mantiene la proporción de la imagen */
+  border-radius: 0.5rem; /* Bordes redondeados opcionales */
+}
+
+/* Espaciado en el cuerpo del modal */
+.modal-body {
+  padding: 1.5rem; /* Espaciado interno */
+  font-size: 1.5rem; /* Tamaño de fuente del título */
+  font-weight: bold; /* Negrita para el título */
+}
+
+/* Estilo para el título del modal */
+.modal-title {
+  font-size: 1.5rem; /* Tamaño de fuente del título */
+  font-weight: bold; /* Negrita para el título */
+}
+
+/* Estilo para los botones en el pie del modal */
+.modal-footer .btn {
+  min-width: 120px; /* Ancho mínimo para los botones */
+}
+
+/* Espaciado entre los botones */
+.modal-footer .btn + .btn {
+  margin-left: 10px; /* Espacio entre botones */
+}
