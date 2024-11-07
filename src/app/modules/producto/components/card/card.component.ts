@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Producto } from 'src/app/models/producto';
 import { CrudService } from 'src/app/modules/admin/services/crud.service';
+import { ServicioCarritoService } from 'src/app/modules/carrito/servicio-carrito.service';
 
 @Component({
   selector: 'app-card',
@@ -15,7 +16,15 @@ export class CardComponent {
   productoSeleccionado!: Producto;
   // Variable para manejar estado de un modal
   modalVisible: boolean = false;
-  constructor(public servicioCrud: CrudService){}
+
+
+  stock: number = 0;
+
+
+
+  constructor(public servicioCrud: CrudService,
+    public servicioCarrito:ServicioCarritoService
+  ){}
   
   ngOnInit(): void{
     this.servicioCrud.obtenerProducto().subscribe(producto => {
@@ -29,4 +38,7 @@ export class CardComponent {
     // Guarda información de un producto elegido por el usuario
     this.productoSeleccionado = info;
   }
+
+
+  
 }

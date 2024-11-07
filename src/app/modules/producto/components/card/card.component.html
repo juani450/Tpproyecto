@@ -67,7 +67,11 @@
           $ {{ productoSeleccionado.precio }}
         </div>
       </div>
+
       <div class="modal-footer">
+
+        <input type="number" placeholder="Cantidad deseada del producto" [(ngModel)]="stock">
+
         <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
           Agregar al carrito
         </button>

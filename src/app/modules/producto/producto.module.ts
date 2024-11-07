@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { ProductoRoutingModule } from './producto-routing.module';
 //VISTAS PRODUCTOS
@@ -30,14 +32,18 @@ import { CardComponent } from './components/card/card.component';
   ],
   imports: [
     CommonModule,
-    ProductoRoutingModule
+    ProductoRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     RemerasComponent,
     BuzosComponent,
     PantalonesComponent,
     MediasComponent,
-    ProductoComponent
+    ProductoComponent,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class ProductoModule { }
