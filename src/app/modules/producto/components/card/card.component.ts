@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Producto } from 'src/app/models/producto';
 import { CrudService } from 'src/app/modules/admin/services/crud.service';
 import { ServicioCarritoService } from 'src/app/modules/carrito/servicio-carrito.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-card',
@@ -22,9 +23,11 @@ export class CardComponent {
 
 
 
-  constructor(public servicioCrud: CrudService,
+  constructor(
+    public servicioCrud: CrudService,
     public servicioCarrito:ServicioCarritoService
   ){}
+
   
   ngOnInit(): void{
     this.servicioCrud.obtenerProducto().subscribe(producto => {
@@ -41,4 +44,12 @@ export class CardComponent {
 
 
   
+
+
+
+
+
+  
+
+
 }

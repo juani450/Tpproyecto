@@ -1,5 +1,10 @@
 
 
+.boton{
+
+  margin-top: 10px;
+  margin-bottom: 10px;
+};
 
 .modal-footer{
     text-align: center;
@@ -20,6 +25,7 @@ button {
     position: relative;
     overflow: hidden;
     outline: 2px solid #2c9caf;
+    margin: 10px;
   }
   
   button:hover {

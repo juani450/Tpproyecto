@@ -37,6 +37,7 @@ export class TableComponent {
     categoria: new FormControl('', Validators.required),
     //imagen: new FormControl('', Validators.required),
     alt: new FormControl('', Validators.required),
+    stock: new FormControl(0, Validators.required)
   });
 
   constructor(public servicioCrud: CrudService) {}
@@ -63,6 +64,7 @@ export class TableComponent {
         //imagen ahora toma la URL generada desde storage
         imagen: '',
         alt: this.producto.value.alt!,
+        stock: this.producto.value.stock!
       };
 
       //Enviamos nombre y url de la imagen ; definimos carpeta de imagenes como "producto"
@@ -138,6 +140,7 @@ export class TableComponent {
       categoria: productoSeleccionado.categoria,
       //imagen: productoSeleccionado.imagen,
       alt: productoSeleccionado.alt,
+      stock: productoSeleccionado.stock
     });
   }
 
@@ -152,6 +155,7 @@ export class TableComponent {
       //
       imagen: this.productoSeleccionado.imagen,
       alt: this.producto.value.alt!,
+      stock:this.producto.value.stock!
     };
 
     // Verificamos que el usuario ingrese una nueva imagen o no
@@ -238,6 +242,7 @@ export class TableComponent {
       descripcion: '',
       categoria: '',
       alt: '',
+      stock:0
     });
   }
 }

@@ -4,6 +4,7 @@ import { AuthService } from '../servicio/auth.service';
 import { FirestoreService } from '../../shared/service/firestore.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import * as CryptoJS from 'crypto-js';
 
 
 @Component({
@@ -21,9 +22,9 @@ export class RegistroComponent {
     nombre: '',
     apellido: '',
     email: '',
-    rol: 'vis', // -> designamos un rol por defecto para los usuarios que se registren,
-    password: '',
-  };
+    rol: 'usuario', // -> designamos un rol por defecto para los usuarios que se registren
+    password: ''
+  }
 
   // CREAR UNA COLECCIÓN QUE SOLO RECIBE OBJETOS DEL TIPO USUARIOS
   coleccionUsuarios: Usuario[] = [];
@@ -33,28 +34,24 @@ export class RegistroComponent {
     public servicioAuth: AuthService, // métodos de autentificación
     public servicioFirestore: FirestoreService, // vincula UID con la colección
     public servicioRutas: Router // método de navegación
-  ) {}
+  ){}
 
   // FUNCIÓN ASINCRONICA PARA EL REGISTRO
-  async registrar() {
+  async registrar(){
     // CREDENCIALES = información que ingrese el usuario
-    
-
+  
     const credenciales = {
       email: this.usuarios.email,
-      password: this.usuarios.password,
-    };
+      password: this.usuarios.password
+    }
 
-
-
-    
     // constante "res" = resguarda una respuesta
     const res = await this.servicioAuth.registrar(credenciales.email, credenciales.password)
     // El método THEN nos devuelve la respuesta esperada por la promesa
     .then(res => {
       Swal.fire({
-        title: "Buen trabajo",
-        text: "Se pudo registrar con exito! ",
+        title: "¡Buen trabajo!",
+        text: "¡Se pudo registrar con éxito! :)",
         icon: "success"
       });
 
@@ -65,24 +62,31 @@ export class RegistroComponent {
     // El método CATCH toma una falla y la vuelve un ERROR
     .catch(error => {
       Swal.fire({
-        title: "OH no!",
-        text: "Hubo un problema al registar el nuevo usuario!",
+        title: "¡Oh no!",
+        text: "Hubo un problema al registrar el nuevo usuario :(",
         icon: "error"
       });
-
     })
 
     const uid = await this.servicioAuth.obtenerUid();
 
     this.usuarios.uid = uid;
 
+    // ENCRIPTACIÓN DE LA CONTRASEÑA DE USUARIO
+    /**
+     * SHA-256: Es un algoritmo de hashing seguro que toma una entrada (en este caso la
+     * contraseña) y produce una cadena de caracteres HEXADECIMAL que representa su HASH
+     * 
+     * toString(): Convierte el resultado del hash en una cadena de caracteres legible
+     */
+    this.usuarios.password = CryptoJS.SHA256(this.usuarios.password).toString();
+
+    // this.guardarUsuario() guardaba la información del usuario en la colección
     this.guardarUsuario();
 
     // Llamamos a la función limpiarInputs() para que se ejecute
     this.limpiarInputs();
   }
-
-
 
   // función para agregar NUEVO USUARIO
   async guardarUsuario(){
@@ -95,9 +99,6 @@ export class RegistroComponent {
     })
   }
 
-
-
-
   // Función para vaciar el formulario
   limpiarInputs(){
     const inputs = {
@@ -109,6 +110,7 @@ export class RegistroComponent {
       password: this.usuarios.password = ''
     }
   }
+
 
 
 

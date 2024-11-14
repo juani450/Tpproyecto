@@ -34,7 +34,8 @@ import { CardComponent } from './components/card/card.component';
     CommonModule,
     ProductoRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    
   ],
   exports: [
     RemerasComponent,
