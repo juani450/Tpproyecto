@@ -1,12 +1,11 @@
 import { Producto } from "./producto";
 
-export interface Pedidos {
+export interface Pedido {
 
 
+    
     idPedido:string;
     producto:Producto;
     cantidad:number;
     total:number;
-
-
 }

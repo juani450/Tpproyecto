@@ -5,6 +5,7 @@ import { FirestoreService } from '../../shared/service/firestore.service';
 import { Usuario } from 'src/app/models/usuario';
 import Swal from 'sweetalert2';
 import * as CryptoJS from 'crypto-js';
+import { CarritoService } from '../../carrito/services/carrito.service';
 
 @Component({
   selector: 'app-inicio-sesion',
@@ -17,7 +18,8 @@ export class InicioSesionComponent {
   constructor(
     public servicioAuth: AuthService,
     public servicioFirestore: FirestoreService,
-    public servicioRutas: Router
+    public servicioRutas: Router,
+    public servicioCarrito: CarritoService
   ) {}
 
   // ####################################### INGRESADO
@@ -107,6 +109,10 @@ export class InicioSesionComponent {
           console.log("Inicio de sesión de usuario visitante");
           // Si es visitante, redirecciona a la vista de 'inicio'
           this.servicioRutas.navigate(['/inicio']);
+
+
+          this.servicioCarrito.iniciarCart();
+
         }
 
 

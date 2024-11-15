@@ -11,3 +11,8 @@ h1{
     font-size: 4rem;
     padding: 60px;
 }
+
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    filter: invert(48%) sepia(69%) saturate(511%) hue-rotate(86deg) brightness(93%) contrast(99%);
+}

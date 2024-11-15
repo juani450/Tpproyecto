@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 
+
 import { ProductoRoutingModule } from './producto-routing.module';
 //VISTAS PRODUCTOS
 import { RemerasComponent } from './page/remeras/remeras.component';
@@ -15,6 +16,9 @@ import { CardRemerasComponent } from './components/card-remeras/card-remeras.com
 import { CardPantalonesComponent } from './components/card-pantalones/card-pantalones.component';
 import { CardMediasComponent } from './components/card-medias/card-medias.component';
 import { CardComponent } from './components/card/card.component';
+import { CarruselComponent } from './components/carrusel/carrusel/carrusel.component';
+import { MatTabsModule } from '@angular/material/tabs';
+
 
 
 @NgModule({
@@ -28,13 +32,15 @@ import { CardComponent } from './components/card/card.component';
     CardRemerasComponent,
     CardPantalonesComponent,
     CardMediasComponent,
-    CardComponent
+    CardComponent,
+    CarruselComponent
   ],
   imports: [
     CommonModule,
     ProductoRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    MatTabsModule 
     
   ],
   exports: [
@@ -44,7 +50,13 @@ import { CardComponent } from './components/card/card.component';
     MediasComponent,
     ProductoComponent,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CardBuzosComponent,
+    CardRemerasComponent,
+    CardPantalonesComponent,
+    CardMediasComponent,
+    CardComponent,
+    MatTabsModule 
   ]
 })
 export class ProductoModule { }

@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Producto } from 'src/app/models/producto';
 import { CrudService } from 'src/app/modules/admin/services/crud.service';
-import { ServicioCarritoService } from 'src/app/modules/carrito/servicio-carrito.service';
+import { CarritoService } from 'src/app/modules/carrito/services/carrito.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -18,14 +18,18 @@ export class CardComponent {
   // Variable para manejar estado de un modal
   modalVisible: boolean = false;
 
+  //Booleano para manejar la visibilidad de "Ultima Compra"
+  compraVisible:boolean = false;
+  //Directivas para comunicarse con el componente padre
+  @Input() productoReciente: string = '';
+  //Output sera definido como un nuevo evento
+  @Output() productoAgregado = new EventEmitter<Producto>;
 
-  stock: number = 0;
 
-
-
+  stock:number = 0;
   constructor(
     public servicioCrud: CrudService,
-    public servicioCarrito:ServicioCarritoService
+    public servicioCarrito: CarritoService
   ){}
 
   
@@ -42,6 +46,25 @@ export class CardComponent {
     this.productoSeleccionado = info;
   }
 
+
+
+  agregarProducto(info:Producto){
+    this.productoAgregado.emit(info);
+
+    this.compraVisible = true;
+
+    const stockDeseado = Math.trunc(this.stock);
+    //Controla el stock que desea el comprador
+    if (stockDeseado<=0 || stockDeseado > info.stock) {
+      Swal.fire({
+        title:'Error al agregar el producto',
+        text:'El stock ingresado no es valido, por favor ingresar un valor valido',
+        icon:'error'
+      })
+    }else{
+      this.servicioCarrito.crearPedido(info,stockDeseado);
+    }
+  }
 
   
 
