@@ -16,7 +16,6 @@ import { CardRemerasComponent } from './components/card-remeras/card-remeras.com
 import { CardPantalonesComponent } from './components/card-pantalones/card-pantalones.component';
 import { CardMediasComponent } from './components/card-medias/card-medias.component';
 import { CardComponent } from './components/card/card.component';
-import { CarruselComponent } from './components/carrusel/carrusel/carrusel.component';
 import { MatTabsModule } from '@angular/material/tabs';
 
 
@@ -32,8 +31,7 @@ import { MatTabsModule } from '@angular/material/tabs';
     CardRemerasComponent,
     CardPantalonesComponent,
     CardMediasComponent,
-    CardComponent,
-    CarruselComponent
+    CardComponent
   ],
   imports: [
     CommonModule,

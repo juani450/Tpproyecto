@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Producto } from 'src/app/models/producto';
+import { Producto } from '../../../../models/producto';
 import { CrudService } from 'src/app/modules/admin/services/crud.service';
 import { CarritoService } from 'src/app/modules/carrito/services/carrito.service';
 import Swal from 'sweetalert2';
@@ -20,13 +20,10 @@ export class CardComponent {
 
   //Booleano para manejar la visibilidad de "Ultima Compra"
   compraVisible:boolean = false;
-  //Directivas para comunicarse con el componente padre
-  @Input() productoReciente: string = '';
-  //Output sera definido como un nuevo evento
-  @Output() productoAgregado = new EventEmitter<Producto>;
 
 
-  stock:number = 0;
+
+  
   constructor(
     public servicioCrud: CrudService,
     public servicioCarrito: CarritoService
@@ -47,24 +44,6 @@ export class CardComponent {
   }
 
 
-
-  agregarProducto(info:Producto){
-    this.productoAgregado.emit(info);
-
-    this.compraVisible = true;
-
-    const stockDeseado = Math.trunc(this.stock);
-    //Controla el stock que desea el comprador
-    if (stockDeseado<=0 || stockDeseado > info.stock) {
-      Swal.fire({
-        title:'Error al agregar el producto',
-        text:'El stock ingresado no es valido, por favor ingresar un valor valido',
-        icon:'error'
-      })
-    }else{
-      this.servicioCarrito.crearPedido(info,stockDeseado);
-    }
-  }
 
   
 

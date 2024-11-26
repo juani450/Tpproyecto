@@ -1,0 +1,13 @@
+.container {
+    display: flex;
+    flex-direction: column; /* Apilar los elementos verticalmente */
+    justify-content: center; /* Centrar los elementos verticalmente */
+    align-items: center; /* Centrar los elementos horizontalmente */
+    text-align: center; /* Centrar el texto dentro de los elementos */
+  }
+
+.titulo{
+    font-size: 40px;
+    margin: 40px;
+
+}

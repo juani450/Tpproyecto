@@ -122,38 +122,107 @@ then set the desired styles for .card-img. */
 
 /*Diseño del modal ver mas*/
 
-/* Asegúrate de que el modal tenga un ancho adecuado */
+/* Estilo para el modal */
 .modal-dialog {
-  max-width: 600px; /* Ajusta el ancho según tus necesidades */
-  margin: 1.75rem auto; /* Centra el modal en la pantalla */
+  max-width: 600px; /* Reducir el ancho para hacerlo más compacto */
+  margin: 1.5rem auto; /* Centrar el modal */
 }
 
-/* Estilo para la imagen en el modal */
-.modal-body img {
-  width: 100%; /* Hace que la imagen ocupe todo el ancho del contenedor */
-  height: auto; /* Mantiene la proporción de la imagen */
-  border-radius: 0.5rem; /* Bordes redondeados opcionales */
+.modal-content {
+  border-radius: 8px; /* Bordes más redondeados */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra ligera */
 }
 
-/* Espaciado en el cuerpo del modal */
-.modal-body {
-  padding: 1.5rem; /* Espaciado interno */
-  font-size: 1.5rem; /* Tamaño de fuente del título */
-  font-weight: bold; /* Negrita para el título */
+.modal-header {
+  background-color: #343a40; /* Fondo oscuro */
+  color: white; /* Texto blanco */
+  padding: 1rem;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  display: flex;
+  justify-content: space-between; /* Separar el título y el botón de cerrar */
+  align-items: center;
 }
 
-/* Estilo para el título del modal */
 .modal-title {
-  font-size: 1.5rem; /* Tamaño de fuente del título */
-  font-weight: bold; /* Negrita para el título */
+  font-size: 1.25rem; /* Título más pequeño y compacto */
+  font-weight: 600; /* Peso de fuente más ligero */
 }
 
-/* Estilo para los botones en el pie del modal */
-.modal-footer .btn {
-  min-width: 120px; /* Ancho mínimo para los botones */
+.btn-close {
+  color: white;
+  opacity: 0.8;
 }
 
-/* Espaciado entre los botones */
-.modal-footer .btn + .btn {
-  margin-left: 10px; /* Espacio entre botones */
+.modal-body {
+  padding: 1rem;
+  background-color: #f8f9fa; /* Fondo claro */
+  text-align: center; /* Centrar contenido */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 20px;
+}
+
+.modal-body img {
+  max-width: 100%;
+  height: auto;
+  max-height: 200px; /* Limitar la altura de la imagen para que no ocupe demasiado espacio */
+  margin-bottom: 1rem;
+  border-radius: 8px;
+}
+
+.mb-3 {
+  margin-bottom: 1rem; /* Espaciado entre los elementos de texto */
+}
+
+.modal-footer {
+  background-color: #f8f9fa;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.modal-footer input[type="number"] {
+  width: 100px;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.btn-primary {
+  background-color: #007bff; /* Botón azul */
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3; /* Hover más oscuro */
+}
+
+.btn-secondary {
+  background-color: #6c757d; /* Botón gris */
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268; /* Hover más oscuro */
+}
+
+/* Agregar transición suave al abrir y cerrar el modal */
+.modal.fade .modal-dialog {
+  transform: scale(0.95);
+  transition: transform 0.3s ease-out;
+}
+
+.modal.show .modal-dialog {
+  transform: scale(1);
 }
